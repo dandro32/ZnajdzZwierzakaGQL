@@ -20,9 +20,13 @@
     "format": "prettier --print-width 120 --write 'src/**/*.ts'"
   },
   "dependencies": {
+    "apollo-datasource-rest": "^3.7.0",
     "apollo-server": "^3.10.2",
+    "class-validator": "^0.13.2",
     "dotenv": "^16.0.0",
-    "graphql": "^16.6.0"
+    "graphql": "^15.3.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.18",

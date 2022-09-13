@@ -7,6 +7,7 @@
      "outDir": "./dist",                        /* Redirect output structure to the directory. */
              /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
     "resolveJsonModule": true,
+    "strictPropertyInitialization": false,
 
     /* Strict Type-Checking Options */
     "strict": true,                          /* Enable all strict type-checking options. */
@@ -48,6 +49,9 @@
 
     /* Advanced Options */
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
+    "lib": ["es2018", "esnext.asynciterable"],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   }
 }
