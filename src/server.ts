@@ -18,11 +18,9 @@ async function bootstrap() {
     schema,
     csrfPrevention: true,
     cache: "bounded",
-    dataSources: () => {
-      return {
-        znajdzZwierzakaAPI: new ZnajdzZwierzakaApi(),
-      };
-    },
+    dataSources: () => ({
+      znajdzZwierzakaAPI: new ZnajdzZwierzakaApi(),
+    }),
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   });
 

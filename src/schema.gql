@@ -5,10 +5,10 @@
 
 type Animal {
   _id: String!
-  additional: String!
-  color: String!
+  additional: String
+  color: String
   location: Location!
-  race: String!
+  race: String
   title: String!
   type: String!
   userId: String!

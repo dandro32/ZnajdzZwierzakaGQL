@@ -19,12 +19,12 @@ export class Animal {
   @Field()
   userId: string;
 
-  @Field()
-  color: string;
+  @Field({ nullable: true })
+  color?: string;
 
-  @Field()
-  race: string;
+  @Field({ nullable: true })
+  race?: string;
 
-  @Field()
-  additional: string;
+  @Field({ nullable: true })
+  additional?: string;
 }

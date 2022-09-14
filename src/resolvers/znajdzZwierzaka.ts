@@ -25,7 +25,7 @@ export class ZnajdzZwierzakaResolver {
   async getLosts(
     @Ctx() ctx: any // TODO: find context type
   ): Promise<Animal[]> {
-    return ctx.dataSources.getLosts();
+    return ctx.dataSources.znajdzZwierzakaAPI.getLosts();
   }
 
   //   @Mutation((returns) => Recipe)

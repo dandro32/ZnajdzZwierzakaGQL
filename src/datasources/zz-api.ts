@@ -1,6 +1,7 @@
 import { RESTDataSource } from "apollo-datasource-rest";
+import { Animal } from "../schemas/animal";
 
-const API_URL = "https://localhost:4000/api";
+const API_URL = "http://localhost:3000/api";
 
 class ZnajdzZwierzakaApi extends RESTDataSource {
   constructor() {
@@ -8,7 +9,7 @@ class ZnajdzZwierzakaApi extends RESTDataSource {
     this.baseURL = API_URL;
   }
 
-  getLosts() {
+  async getLosts(): Promise<Animal[]> {
     return this.get("losts");
   }
 
