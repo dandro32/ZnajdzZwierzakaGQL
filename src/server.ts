@@ -1,10 +1,18 @@
 import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
 import ZnajdzZwierzakaApi from "./datasources/zz-api";
+import ColorsApi from "./datasources/colors-api";
 import { ZnajdzZwierzakaResolver } from "./resolvers";
 import * as path from "path";
 import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import { buildSchema } from "type-graphql";
+import DogApi from "./datasources/dog-api";
+
+const dataSources = {
+  znajdzZwierzakaAPI: new ZnajdzZwierzakaApi(),
+  colorsApi: new ColorsApi(),
+  dogApi: new DogApi(),
+};
 
 async function bootstrap() {
   // build TypeGraphQL executable schema
@@ -18,9 +26,7 @@ async function bootstrap() {
     schema,
     csrfPrevention: true,
     cache: "bounded",
-    dataSources: () => ({
-      znajdzZwierzakaAPI: new ZnajdzZwierzakaApi(),
-    }),
+    dataSources: () => dataSources,
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   });
 

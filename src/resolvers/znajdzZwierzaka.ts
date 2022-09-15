@@ -28,6 +28,22 @@ export class ZnajdzZwierzakaResolver {
     return ctx.dataSources.znajdzZwierzakaAPI.getLosts();
   }
 
+  @Query(() => Animal)
+  async getLost(
+    @Ctx() ctx: any, // TODO: find context type
+    @Arg("id") id: string
+  ): Promise<Animal | undefined> {
+    return ctx.dataSources.znajdzZwierzakaAPI.getLostById(id);
+  }
+
+  @Query(() => Animal)
+  async deleteLost(
+    @Ctx() ctx: any, // TODO: find context type
+    @Arg("id") id: string
+  ): Promise<Animal | undefined> {
+    return ctx.dataSources.znajdzZwierzakaAPI.deleteLost(id);
+  }
+
   //   @Mutation((returns) => Recipe)
   //   async addRecipe(@Arg("recipe") recipeInput: RecipeInput): Promise<Recipe> {
   //     const recipe = Object.assign(new Recipe(), {
