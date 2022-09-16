@@ -1,9 +1,6 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
-export interface DogsResponse {
-  message: Record<string, string[]>;
-  status: string;
-}
+export type DogsMessages = Record<string, string[]>;
 
 const ANIMAL_TYPES: Record<string, string> = {
   dogs: "Psy",
@@ -21,8 +18,26 @@ class DogApi extends RESTDataSource {
     return Promise.resolve(ANIMAL_TYPES);
   }
 
-  async getDogs(type: string): Promise<DogsResponse> {
-    return this.get("breeds/list/all");
+  async getDogs(type: string): Promise<string[]> {
+    const response = await this.get("breeds/list/all");
+
+    if (Object.keys(response?.message || {}).length) {
+      const result: string[] = [];
+
+      Object.entries(response.message).forEach(
+        ([speciesName, subSpecies]: any) => {
+          if (subSpecies?.length) {
+            subSpecies.forEach((subName: string) => {
+              result.push(`${speciesName} ${subName}`);
+            });
+          }
+        }
+      );
+
+      return result;
+    }
+
+    return [];
   }
 }
 

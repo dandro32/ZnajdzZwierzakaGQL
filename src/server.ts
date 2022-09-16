@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
 import ZnajdzZwierzakaApi from "./datasources/zz-api";
 import ColorsApi from "./datasources/colors-api";
-import { ZnajdzZwierzakaResolver } from "./resolvers";
+import { DogResolver, ZnajdzZwierzakaResolver } from "./resolvers";
 import * as path from "path";
 import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import { buildSchema } from "type-graphql";
@@ -17,7 +17,7 @@ const dataSources = {
 async function bootstrap() {
   // build TypeGraphQL executable schema
   const schema = await buildSchema({
-    resolvers: [ZnajdzZwierzakaResolver],
+    resolvers: [DogResolver, ZnajdzZwierzakaResolver],
     // automatically create `schema.gql` file with schema definition in current folder
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });

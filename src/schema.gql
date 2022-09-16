@@ -20,6 +20,12 @@ type Location {
 }
 
 type Query {
+  deleteLost(id: String!): Animal!
+
+  """Get all dogs"""
+  getDogs: [Animal!]!
+  getLost(id: String!): Animal!
+
   """Get all lost animals"""
   getLosts: [Animal!]!
 }
