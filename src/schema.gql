@@ -14,6 +14,11 @@ type Animal {
   userId: String!
 }
 
+type Color {
+  _id: String!
+  name: String!
+}
+
 type Dog {
   _id: String!
   name: String!
@@ -26,6 +31,9 @@ type Location {
 
 type Query {
   deleteLost(id: String!): Animal!
+
+  """Get all colors"""
+  getColors: [Color!]!
 
   """Get all dogs"""
   getDogs: [Dog!]!

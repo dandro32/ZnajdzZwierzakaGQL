@@ -1,8 +1,6 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 import { Dog } from "../schemas/dog";
 
-export type DogsMessages = Record<string, string[]>;
-
 const ANIMAL_TYPES: Record<string, string> = {
   dogs: "Psy",
 };
