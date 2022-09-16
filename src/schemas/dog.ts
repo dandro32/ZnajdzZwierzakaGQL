@@ -1,5 +1,11 @@
 import "reflect-metadata";
-import { ObjectType } from "type-graphql";
+import { ObjectType, Field } from "type-graphql";
 
 @ObjectType()
-export class Dog {}
+export class Dog {
+  @Field()
+  _id: string;
+
+  @Field()
+  name: string;
+}

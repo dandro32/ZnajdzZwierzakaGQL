@@ -1,4 +1,5 @@
 import { RESTDataSource } from "apollo-datasource-rest";
+import { Dog } from "../schemas/dog";
 
 export type DogsMessages = Record<string, string[]>;
 
@@ -18,17 +19,20 @@ class DogApi extends RESTDataSource {
     return Promise.resolve(ANIMAL_TYPES);
   }
 
-  async getDogs(type: string): Promise<string[]> {
+  async getDogs(type: string): Promise<Dog[]> {
     const response = await this.get("breeds/list/all");
 
     if (Object.keys(response?.message || {}).length) {
-      const result: string[] = [];
+      const result: Dog[] = [];
 
       Object.entries(response.message).forEach(
         ([speciesName, subSpecies]: any) => {
           if (subSpecies?.length) {
             subSpecies.forEach((subName: string) => {
-              result.push(`${speciesName} ${subName}`);
+              result.push({
+                _id: `${speciesName}-${subName}`,
+                name: `${speciesName} ${subName}`,
+              });
             });
           }
         }
